@@ -12,7 +12,7 @@ const buttonVariants = cva(
         stop: 'bg-rose-500 text-white hover:bg-rose-600',
       },
       size: {
-        xl: 'h-14 w-20 px-6 py-4',
+        xl: 'h-14 w-22 px-6 py-4',
       },
     },
     defaultVariants: {
@@ -22,25 +22,13 @@ const buttonVariants = cva(
   }
 )
 
-interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+}
 
-const Button: FC<ButtonProps> = ({
-  className,
-  variant,
-  size,
-  children,
-  ...props
-}) => {
-  return (
-    <button
-      className={cn(buttonVariants({ className, variant, size }))}
-      {...props}
-    >
-      {children}
-    </button>
-  )
+const Button: FC<ButtonProps> = ({className, variant, size, children, ...props}) => {
+  return <button className={cn(buttonVariants({className, variant, size}))} {...props}>
+    {children }
+  </button>
 }
 
 export default Button
