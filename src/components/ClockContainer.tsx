@@ -14,11 +14,12 @@ const ClockContainer: FC<ClockContainerProps> = ({}) => {
       <span className='text-gray-400 text-lg font-semibold'>Time studied:</span>
       <Clock isRunning={isRunning} />
       <div className='flex justify-center items-center gap-1'>
-        <Button onClick={intervalToggler} disabled={isRunning} variant='play'>
-          <Play className='w-8 h-8' />
-        </Button>
-        <Button onClick={intervalToggler} disabled={!isRunning} variant='pause'>
-          <Pause className='w-8 h-8' />
+        <Button onClick={intervalToggler}>
+          {isRunning ? (
+            <Pause className='w-8 h-8' />
+          ) : (
+            <Play className='w-8 h-8' />
+          )}
         </Button>
         <Button variant='stop'>Save day data</Button>
       </div>

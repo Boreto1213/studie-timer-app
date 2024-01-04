@@ -10,13 +10,14 @@ const buttonVariants = cva(
         play: 'bg-green-500 text-white hover:bg-green-600',
         pause: 'bg-orange-500 text-white hover:bg-orange-600',
         stop: 'bg-rose-500 text-white hover:bg-rose-600',
+        default: 'bg-gray-500 text-white hover:bg-gray-600'
       },
       size: {
         xl: 'h-14 w-22 px-6 py-4',
       },
     },
     defaultVariants: {
-      variant: 'play',
+      variant: 'default',
       size: 'xl',
     },
   }
