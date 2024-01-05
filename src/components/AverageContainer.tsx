@@ -6,7 +6,7 @@ interface AverageContainerProps {}
 const AverageContainer: FC<AverageContainerProps> = ({}) => {
   const { history } = useDaysHistory()
   const studiedAverage = history.reduce(
-    (acc, cur) => Math.round(acc + cur.timeStudied / history.length),
+    (acc, cur) => Math.round(acc + cur.studyTime / history.length),
     0
   )
   const hoursStudiedAvg = Math.floor(studiedAverage / 3600)
@@ -34,7 +34,7 @@ const AverageContainer: FC<AverageContainerProps> = ({}) => {
         <span>{`${monthNames[today.getMonth()]} ${today.getFullYear()}`}</span>
       </div>
       <div className='text-3xl font-medium text-center mb-3'>
-        {hoursStudiedAvg} hours {minutesStudiedAvg} minutes
+        {hoursStudiedAvg} hour{hoursStudiedAvg !== 1 ? 's' : null} {minutesStudiedAvg} minute{minutesStudiedAvg !== 1 ? 's' : null}
       </div>
       <div className='text-center text-gray-400'>
         {hoursStudiedAvg >= 8

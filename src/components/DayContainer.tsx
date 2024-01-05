@@ -4,12 +4,12 @@ import { cn } from '../lib/utils'
 
 interface DayContainerProps {
   date: Date
-  timeStudied: number
+  studyTime: number
 }
 
-const DayContainer: FC<DayContainerProps> = ({ date, timeStudied }) => {
-  const hoursStudied = Math.floor(timeStudied / 3600)
-  const minutesStudied = (timeStudied % 3600) / 60
+const DayContainer: FC<DayContainerProps> = ({ date, studyTime }) => {
+  const hoursStudied = Math.floor(studyTime / 3600)
+  const minutesStudied = Math.floor((studyTime % 3600) / 60)
   return (
     <div className='flex items-center gap-1 min-h-14 w-full rounded-md overflow-hidden bg-gray-100'>
       <div className='flex flex-col h-full w-16 items-center justify-center '>
@@ -21,7 +21,7 @@ const DayContainer: FC<DayContainerProps> = ({ date, timeStudied }) => {
         </div>
       </div>
       <div className='flex-grow text-center text-lg font-medium'>
-        {hoursStudied} hours {minutesStudied} minutes
+        {hoursStudied} hour{hoursStudied !== 1 ? 's' : null} {minutesStudied} minute{minutesStudied !== 1 ? 's' : null}
       </div>
 
       <div
@@ -35,7 +35,9 @@ const DayContainer: FC<DayContainerProps> = ({ date, timeStudied }) => {
         {hoursStudied >= 8 ? (
           <Trophy className='w-6 h-6 text-yellow-300' />
         ) : hoursStudied < 2 ? (
-          <span className='text-xs text-red-500 uppercase font-semibold'>bitch</span>
+          <span className='text-xs text-red-500 uppercase font-semibold'>
+            bitch
+          </span>
         ) : null}
       </div>
     </div>
